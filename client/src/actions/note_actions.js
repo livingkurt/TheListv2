@@ -5,8 +5,8 @@ import {
 import axios from 'axios';
 
 const get_notes = () => async (dispatch) => {
+  console.log("Hello")
   try {
-
     dispatch({ type: NOTES_READ_REQUEST });
     const { data } = await axios.get("/api/notes");
     dispatch({ type: NOTES_READ_SUCCESS, payload: data });
@@ -53,7 +53,7 @@ const get_note = (noteId) => async (dispatch) => {
 
 const delete_note = (noteId) => async (dispatch, getState) => {
   try {
-    const { userLogin: { userInfo } } = getState();
+    // const { userLogin: { userInfo } } = getState();
     dispatch({ type: NOTE_DELETE_REQUEST, payload: noteId });
     const { data } = await axios.delete("/api/notes/" + noteId, {
     });

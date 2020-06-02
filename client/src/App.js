@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd'
 import data from './data';
 import Column from './components/Column';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { get_notes } from "./actions/note_actions"
 
 const Title = styled.div`
     text-align: center;
@@ -15,6 +17,20 @@ const Container = styled.div`
 `
 
 const App = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    dispatch(get_notes());
+  }, [])
+
+  const notes_read = useSelector(state => state.notes_read);
+  // console.log(all_notes)
+  const { loading, success, notes } = notes_read;
+  console.log(notes)
+
+  // const 
 
 
   const [state, setState] = useState(data)

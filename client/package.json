@@ -2,14 +2,21 @@
 	"name": "client",
 	"version": "0.1.0",
 	"private": true,
+	"proxy": "http://localhost:3001/",
 	"dependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.5.0",
 		"@testing-library/user-event": "^7.2.1",
+		"axios": "^0.19.2",
+		"body-parser": "^1.19.0",
+		"http-proxy-middleware": "^1.0.4",
 		"react": "^16.4.2",
 		"react-beautiful-dnd": "^13.0.0",
 		"react-dom": "^16.4.2",
+		"react-redux": "^7.2.0",
 		"react-scripts": "1.1.5",
+		"redux": "^4.0.5",
+		"redux-thunk": "^2.3.0",
 		"styled-components": "^3.4.5"
 	},
 	"scripts": {

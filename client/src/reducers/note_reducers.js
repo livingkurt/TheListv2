@@ -9,7 +9,7 @@ function notes_read_reducer(state = { notes: [] }, action) {
     case NOTES_READ_REQUEST:
       return { loading: true, notes: [] };
     case NOTES_READ_SUCCESS:
-      return { loading: false, notes: action.payload };
+      return { loading: false, success: true, notes: action.payload };
     case NOTES_READ_FAIL:
       return { loading: false, error: action.payload }
     default:
@@ -23,7 +23,7 @@ function note_read_reducer(state = { note: {} }, action) {
     case NOTE_READ_REQUEST:
       return { loading: true };
     case NOTE_READ_SUCCESS:
-      return { loading: false, note: action.payload };
+      return { loading: false, success: true, note: action.payload };
     case NOTE_READ_FAIL:
       return { loading: false, error: action.payload }
     default:
@@ -37,7 +37,7 @@ function note_delete_reducer(state = { note: {} }, action) {
     case NOTE_DELETE_REQUEST:
       return { loading: true };
     case NOTE_DELETE_SUCCESS:
-      return { loading: false, note: action.payload, success: true };
+      return { loading: false, success: true, note: action.payload };
     case NOTE_DELETE_FAIL:
       return { loading: false, error: action.payload }
     default:
