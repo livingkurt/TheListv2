@@ -21,20 +21,18 @@ const App = () => {
 
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
-
     if (!destination) {
       return;
     }
-
     if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
+      destination.droppableId === source.droppableId && destination.index === source.index
     ) {
       return;
     }
 
     const begin = state.columns[source.droppableId];
     const end = state.columns[destination.droppableId];
+
 
     if (begin === end) {
       const newHeroIds = Array.from(begin.heroIds);
