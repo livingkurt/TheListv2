@@ -11,20 +11,20 @@ const Container = styled.div`
   background-color: whitesmoke;
 `;
 
-export default class Hero extends React.Component {
-  render() {
-    return (
-      <Draggable draggableId={this.props.hero.id} index={this.props.index}>
-        {provided => (
-          <Container
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            innerRef={provided.innerRef}
-          >
-            {this.props.hero.name}
-          </Container>
-        )}
-      </Draggable>
-    );
-  }
+const Hero = (props) => {
+  return (
+    <Draggable draggableId={props.hero.id} index={props.index}>
+      {provided => (
+        <Container
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          innerRef={provided.innerRef}
+        >
+          {props.hero.name}
+        </Container>
+      )}
+    </Draggable>
+  );
 }
+
+export default Hero
