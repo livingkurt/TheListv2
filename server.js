@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 // const routes = require('./routes/index')
 const note_routes = require('./routes/note_routes')
-// const bodyParser = require('body-parser')
+const list_routes = require('./routes/list_routes')
+const bodyParser = require('body-parser')
 
 const app = express();
 const PORT = process.env.PORT || 3001
@@ -10,7 +11,7 @@ const PORT = process.env.PORT || 3001
 
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/thelist_db",
+  process.env.MONGODB_URI || "mongodb://localhost/hero_db",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -20,8 +21,9 @@ mongoose.connect(
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-// app.use(bodyParser.json())
+app.use(bodyParser.json())
 app.use("/api/notes", note_routes)
+app.use("/api/lists", list_routes)
 // app.use("/api/folders", routes.folder_routes)
 // app.use("/api/categories", routes.category_routes)
 

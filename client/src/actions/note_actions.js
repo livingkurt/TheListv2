@@ -22,11 +22,11 @@ const save_note = (note) => async (dispatch, getState) => {
     dispatch({ type: NOTE_SAVE_REQUEST, payload: note });
     const { userLogin: { userInfo } } = getState();
     if (!note._id) {
-      const { data } = await axios.post('/api/note', note, {
+      const { data } = await axios.post('/api/notes', note, {
       });
       dispatch({ type: NOTE_SAVE_SUCCESS, payload: data });
     } else {
-      const { data } = await axios.put('/api/note/' + note._id, note, {
+      const { data } = await axios.put('/api/notes/' + note._id, note, {
         headers: {
           'Authorization': 'Bearer ' + userInfo.token
         }

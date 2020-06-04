@@ -5,6 +5,7 @@ import Column from './components/Column';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { get_notes } from "./actions/note_actions"
+import { get_lists } from './actions/list_actions';
 
 const Title = styled.div`
     text-align: center;
@@ -18,11 +19,17 @@ const Container = styled.div`
 
 const App = () => {
 
+  useEffect(() => {
+    dispatch(get_notes());
+    dispatch(get_notes());
+  }, [])
+
   const dispatch = useDispatch();
 
   useEffect(() => {
 
     dispatch(get_notes());
+    dispatch(get_lists());
   }, [])
 
   const notes_read = useSelector(state => state.notes_read);
@@ -30,10 +37,17 @@ const App = () => {
   const { loading, success, notes } = notes_read;
   console.log(notes)
 
+  const lists_read = useSelector(state => state.lists_read);
+  // console.log(all_lists)
+  const { lists } = lists_read;
+  console.log(lists)
+
+
   // const 
 
 
   const [state, setState] = useState(data)
+  const [notes_state, set_notes_state] = useState(notes)
 
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
@@ -109,6 +123,7 @@ const App = () => {
           {state.columnsort.map(columnId => {
             const column = state.columns[columnId];
             const heroes = column.heroIds.map(heroId => state.heroes[heroId]);
+            // console.log({ heroes })
             return <Column key={Column.id} column={column} heroes={heroes} />;
           })}
         </Container>
