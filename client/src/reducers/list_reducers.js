@@ -1,5 +1,5 @@
 import {
-  LISTS_READ_REQUEST, LISTS_READ_SUCCESS, LISTS_READ_FAIL,
+  LISTS_READ_REQUEST, LISTS_READ_SUCCESS, LISTS_READ_FAIL, LISTS_READ_ORDER_REQUEST, LISTS_READ_ORDER_SUCCESS, LISTS_READ_ORDER_FAIL,
   LIST_READ_REQUEST, LIST_READ_SUCCESS, LIST_READ_FAIL, LIST_SAVE_REQUEST, LIST_SAVE_SUCCESS, LIST_SAVE_FAIL, LIST_DELETE_SUCCESS, LIST_DELETE_FAIL, LIST_DELETE_REQUEST
 } from "../constants/list_constants"
 
@@ -11,6 +11,20 @@ function lists_read_reducer(state = { lists: [] }, action) {
     case LISTS_READ_SUCCESS:
       return { loading: false, success: true, lists: action.payload };
     case LISTS_READ_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state;
+  }
+}
+
+function lists_read_order_reducer(state = { lists: [] }, action) {
+
+  switch (action.type) {
+    case LISTS_READ_ORDER_REQUEST:
+      return { loading: true, lists: [] };
+    case LISTS_READ_ORDER_SUCCESS:
+      return { loading: false, success: true, order: action.payload };
+    case LISTS_READ_ORDER_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state;
@@ -59,4 +73,4 @@ function list_save_reducer(state = { list: {} }, action) {
   }
 }
 
-export { lists_read_reducer, list_read_reducer, list_save_reducer, list_delete_reducer }
+export { lists_read_reducer, lists_read_order_reducer, list_read_reducer, list_save_reducer, list_delete_reducer }

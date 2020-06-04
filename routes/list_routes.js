@@ -46,6 +46,19 @@ router.get('/', async (req, res) => {
 
 });
 
+router.get('/order', async (req, res) => {
+
+  try {
+    const request = await db.ListOrder.find({})
+    // Send the request back to the front end
+    res.send(request)
+  }
+  catch (err) {
+    console.log(err);
+  }
+
+});
+
 router.get('/:list_id', async (req, res) => {
 
   try {

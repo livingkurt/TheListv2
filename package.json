@@ -11,7 +11,7 @@
 		"install": "cd client && npm install",
 		"build": "cd client && npm run build",
 		"heroku-postbuild": "npm run build",
-		"seed": "node Seeder/column_seed.js"
+		"seed": "node Seeder/list_order_seed.js"
 	},
 	"repository": {
 		"type": "git",

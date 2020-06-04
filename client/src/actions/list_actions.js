@@ -1,5 +1,5 @@
 import {
-  LISTS_READ_REQUEST, LISTS_READ_SUCCESS, LISTS_READ_FAIL,
+  LISTS_READ_REQUEST, LISTS_READ_SUCCESS, LISTS_READ_FAIL, LISTS_READ_ORDER_REQUEST, LISTS_READ_ORDER_SUCCESS, LISTS_READ_ORDER_FAIL,
   LIST_READ_REQUEST, LIST_READ_SUCCESS, LIST_READ_FAIL, LIST_SAVE_REQUEST, LIST_SAVE_SUCCESS, LIST_SAVE_FAIL, LIST_DELETE_SUCCESS, LIST_DELETE_FAIL, LIST_DELETE_REQUEST
 } from "../constants/list_constants"
 import axios from 'axios';
@@ -14,6 +14,19 @@ const get_lists = () => async (dispatch) => {
   catch (error) {
 
     dispatch({ type: LISTS_READ_FAIL, payload: error.message });
+  }
+}
+
+const get_list_order = () => async (dispatch) => {
+  console.log("Hello lists")
+  try {
+    dispatch({ type: LISTS_READ_ORDER_REQUEST });
+    const { data } = await axios.get("/api/lists/order");
+    dispatch({ type: LISTS_READ_ORDER_SUCCESS, payload: data });
+  }
+  catch (error) {
+
+    dispatch({ type: LISTS_READ_ORDER_FAIL, payload: error.message });
   }
 }
 
@@ -64,4 +77,4 @@ const delete_list = (listId) => async (dispatch, getState) => {
   }
 }
 
-export { get_lists, get_list, save_list, delete_list }
+export { get_lists, get_list, save_list, delete_list, get_list_order }

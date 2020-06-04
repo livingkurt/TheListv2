@@ -5,7 +5,7 @@ import Column from './components/Column';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { get_notes } from "./actions/note_actions"
-import { get_lists } from './actions/list_actions';
+import { get_lists, get_list_order } from './actions/list_actions';
 
 const Title = styled.div`
     text-align: center;
@@ -30,6 +30,7 @@ const App = () => {
 
     dispatch(get_notes());
     dispatch(get_lists());
+    dispatch(get_list_order());
   }, [])
 
   const notes_read = useSelector(state => state.notes_read);
@@ -41,6 +42,14 @@ const App = () => {
   // console.log(all_lists)
   const { lists } = lists_read;
   console.log(lists)
+
+  const lists_read_order = useSelector(state => state.lists_read_order);
+
+  // console.log(all_lists)
+  const { order } = lists_read_order;
+  console.log(order)
+  console.log({ notes, lists, order })
+  const database = { notes, lists, order }
 
 
   // const 
