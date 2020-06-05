@@ -22,16 +22,18 @@ const HeroList = styled.div`
   min-height: 100px;
 `;
 const Column = (props) => {
+  console.log({ Column: props.heroes })
 
   return (
     <Container>
       <Title>{props.column.title}</Title>
-      <Droppable droppableId={props.column.id}>
+      <Droppable droppableId={props.column._id}>
         {provided => (
           <HeroList innerRef={provided.innerRef} {...provided.droppableProps}>
-            {props.heroes.map((hero, index) => (
-              <Hero key={hero.id} hero={hero} index={index} />
-            ))}
+            {props.heroes ? props.heroes.map((hero, index) => (
+              // console.log({ hero: hero._id })
+              <Hero key={hero._id} hero={hero} index={index} />
+            )) : "No Heros"}
             {provided.placeholder}
           </HeroList>
         )}

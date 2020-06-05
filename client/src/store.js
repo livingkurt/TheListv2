@@ -10,6 +10,7 @@ import { lists_read_reducer, lists_read_order_reducer, list_read_reducer, list_s
 // console.log({ "store": userInfo })
 
 const initialState = {};
+// const initialState = { notes_read: { notes }, lists_read: { userInfo } };
 
 const reducer = combineReducers({
   notes_read: notes_read_reducer,

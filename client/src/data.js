@@ -48,3 +48,4 @@ const data = {
   columnsort: ['column-1', 'column-2', 'column-3'],
 }
 export default data;
+
