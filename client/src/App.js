@@ -4,8 +4,8 @@ import data from './data';
 import Column from './components/Column';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { get_notes } from "./actions/note_actions"
-import { get_lists, get_list_order } from './actions/list_actions';
+import { get_notes, save_notes } from "./actions/note_actions"
+import { get_lists, get_list_order, save_list, save_order } from './actions/list_actions';
 
 const Title = styled.div`
     text-align: center;
@@ -161,8 +161,13 @@ const App = () => {
         },
       };
       setState(newState);
+      handle_save_lists(newState.columns)
+      // handle_save_notes(newState.heroes)
+      // handle_save_order(newState.columnsort)
       return;
     }
+
+
     const beginHeroIds = Array.from(begin.notes);
 
     beginHeroIds.splice(source.index, 1);
@@ -192,7 +197,39 @@ const App = () => {
       },
     };
     setState(newState)
+    handle_save_lists(newState.columns)
+    // handle_save_notes(newState.heroes)
+    // handle_save_order(newState.columnsort)
   };
+
+  const handle_save_lists = (lists) => {
+    // console.log({ handle_save_lists: lists })
+    console.log(Object.values(lists))
+    Object.values(lists).map(list => {
+      dispatch(save_list(list));
+    })
+
+
+  }
+
+  // const handle_save_notes = (notes) => {
+  //   console.log({ handle_save_notes: notes })
+  //   console.log(Object.values(notes))
+  //   dispatch(save_lists());
+
+
+  // }
+
+  // const handle_save_order = (order) => {
+  //   console.log({ handle_save_order: order })
+  //   console.log(Object.values(order))
+  //   dispatch(save_order());
+
+  // }
+
+
+
+
   return (
     <div>
       {loading_notes && loading_lists && loading_order

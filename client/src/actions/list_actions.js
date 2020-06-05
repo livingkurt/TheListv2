@@ -31,19 +31,15 @@ const get_list_order = () => async (dispatch) => {
 }
 
 const save_list = (list) => async (dispatch, getState) => {
+  console.log({ list_actions: list })
   try {
     dispatch({ type: LIST_SAVE_REQUEST, payload: list });
-    const { userLogin: { userInfo } } = getState();
+    // const { userLogin: { userInfo } } = getState();
     if (!list._id) {
-      const { data } = await axios.post('/api/lists', list, {
-      });
+      const { data } = await axios.post('/api/lists', list);
       dispatch({ type: LIST_SAVE_SUCCESS, payload: data });
     } else {
-      const { data } = await axios.put('/api/list/' + list._id, list, {
-        headers: {
-          'Authorization': 'Bearer ' + userInfo.token
-        }
-      });
+      const { data } = await axios.put('/api/lists/' + list._id, list);
       dispatch({ type: LIST_SAVE_SUCCESS, payload: data });
     }
 

@@ -99,28 +99,12 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-
+  console.log({ list_routes: req.body })
   try {
-    const note = await db.Lists.updateOne({ _id: req.params.id },
-      {
-        title: req.body.title,
-        body: req.body.body,
-        folder_id: req.body.folder_id,
-        list_id: req.body.list_id,
-        priority: req.body.priority,
-        category_id: req.body.category,
-        // category_id: req.body.category_id ? req.body.category_id : "5e8f7c48d4e1a46221ddb732",
-        scheduled: req.body.scheduled,
-        scheduled_date: req.body.scheduled_date,
-        scheduled_time: req.body.scheduled_time,
-        completed: req.body.completed,
-        // date_completed: req.body.completed ? new Date().setDate(new Date().getDate()) : "",
-        date_completed: new Date().setDate(new Date().getDate()),
-        date_modified: new Date().setDate(new Date().getDate())
-      })
+    const list = await db.Lists.updateOne({ _id: req.params.id }, req.body)
     // Send the request back to the front end
-    res.send(note)
-    console.log({ "note.data": note.data })
+    res.send(list)
+    // console.log({ "note.data": note.data })
 
   }
   catch (err) {
