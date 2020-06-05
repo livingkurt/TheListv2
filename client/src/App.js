@@ -145,41 +145,41 @@ const App = () => {
 
 
     if (begin === end) {
-      const newHeroIds = Array.from(begin.heroIds);
+      const newHeroIds = Array.from(begin.notes);
       newHeroIds.splice(source.index, 1);
       newHeroIds.splice(destination.index, 0, draggableId);
 
       const newColumn = {
         ...begin,
-        heroIds: newHeroIds,
+        notes: newHeroIds,
       };
       const newState = {
         ...state,
         columns: {
           ...state.columns,
-          [newColumn.id]: newColumn,
+          [newColumn._id]: newColumn,
         },
       };
       setState(newState);
       return;
     }
-    const beginHeroIds = Array.from(begin.heroIds);
+    const beginHeroIds = Array.from(begin.notes);
 
     beginHeroIds.splice(source.index, 1);
 
     const newBegin = {
       ...begin,
-      heroIds: beginHeroIds
+      notes: beginHeroIds
     };
 
 
-    const endHeroIds = Array.from(end.heroIds);
+    const endHeroIds = Array.from(end.notes);
 
     endHeroIds.splice(destination.index, 0, draggableId);
 
     const newEnd = {
       ...end,
-      heroIds: endHeroIds
+      notes: endHeroIds
     };
 
 
@@ -187,8 +187,8 @@ const App = () => {
       ...state,
       columns: {
         ...state.columns,
-        [newBegin.id]: newBegin,
-        [newEnd.id]: newEnd,
+        [newBegin._id]: newBegin,
+        [newEnd._id]: newEnd,
       },
     };
     setState(newState)
@@ -218,10 +218,10 @@ const App = () => {
                 // console.log(column.notes)
                 // const heroes = !column.notes ? [] : column.notes.map(note => console.log(note));
                 // const arr = []
-                // const heroes = !column.notes ? [] : column.notes.map(note => console.log(state.notes._id[note]));
+                // const heroes = !column.notes ? [] : column.notes.map(note => console.log(state.notes.__id[note]));
                 // const heroes = column.notes.map(heroId => state.heroes[heroId]);
-                // console.log(Column.id)
-                return <Column key={Column.id} column={column} heroes={heroes} />;
+                // console.log(Column._id)
+                return <Column key={Column._id} column={column} heroes={heroes} />;
               })}
             </Container>
           </DragDropContext>
