@@ -242,22 +242,11 @@ const App = () => {
           </Title>
           <DragDropContext onDragEnd={onDragEnd}>
             <Container>
-              {/* {console.log(state.columnsort)} */}
               {!state.columnsort ? "loading" : state.columnsort.map(columnId => {
                 const column = state.columns[columnId];
                 const hero = state.heroes
-                console.log(hero)
-
                 const heroes = !column.notes ? [] : column.notes.map(note => hero[note]);
                 console.log(heroes)
-
-
-                // console.log(column.notes)
-                // const heroes = !column.notes ? [] : column.notes.map(note => console.log(note));
-                // const arr = []
-                // const heroes = !column.notes ? [] : column.notes.map(note => console.log(state.notes.__id[note]));
-                // const heroes = column.notes.map(heroId => state.heroes[heroId]);
-                // console.log(Column._id)
                 return <Column key={Column._id} column={column} heroes={heroes} />;
               })}
             </Container>
