@@ -27,6 +27,18 @@ const Header = (props) => {
 
   // const dispatch = useDispatch();
 
+  const openMenu = () => {
+    const sidebar = document.querySelector(".sidebar")
+    console.log(sidebar.classList.value)
+    if (sidebar.classList.value === "sidebar open") {
+      document.querySelector(".sidebar").classList.remove("open");
+    }
+    else if (sidebar.classList.value === "sidebar") {
+      document.querySelector(".sidebar").classList.add("open");
+    }
+
+  }
+
 
   const [show_hide_create_note_state, set_show_hide_create_note_state] = useState({
     name: "Create New Note",
@@ -151,7 +163,7 @@ const Header = (props) => {
   return (
     <header style={header_styles} id="overlay">
       <Title styles={{ margin: "0px", fontSize: "50px" }}>TheList</Title>
-      <ButtonWord styles={{ margin: "20px" }} on_click_function={show_hide_notes} >{show_hide_notes_state.name}</ButtonWord>
+      <ButtonWord styles={{ margin: "20px" }} on_click_function={openMenu} >{show_hide_notes_state.name}</ButtonWord>
       <ButtonWord styles={{ margin: "20px" }} on_click_function={show_create_note_container} >{show_hide_create_note_state.name}</ButtonWord>
       <ButtonWord styles={{ margin: "20px" }} on_click_function={show_hide_master} >{show_hide_master_state.name}</ButtonWord>
       <ButtonWord styles={{ margin: "20px" }} on_click_function={show_hide_dump} >{show_hide_dump_state.name}</ButtonWord>

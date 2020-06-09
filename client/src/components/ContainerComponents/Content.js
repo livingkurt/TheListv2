@@ -255,12 +255,7 @@ const Content = (props) => {
   return (
 
     <div style={{ ...content_styles, ...props.styles }} className="content">
-      {/* <div> */}
-      {loading_notes && loading_lists && loading_order
-        ?
-        "Loading Data"
-        :
-
+      {loading_notes && loading_lists && loading_order ? "Loading Data" :
         <DragDropContext onDragEnd={onDragEnd}>
           {!state.columnsort ? "loading" : state.columnsort.map(columnId => {
             const column = state.columns[columnId];
@@ -270,7 +265,6 @@ const Content = (props) => {
             return <Column key={Column._id} column={column} heroes={heroes} />;
           })}
         </DragDropContext>}
-      {/* </div> */}
     </div>
   );
 }
