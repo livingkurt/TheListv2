@@ -28,7 +28,7 @@ const Column = (props) => {
   console.log({ Column: props.heroes })
 
   return (
-    <Section>
+    <Section class={props.column.list_name}>
       <Title>{props.column.list_name}</Title>
       <ScrollContainer>
         <Droppable droppableId={props.column._id}>
