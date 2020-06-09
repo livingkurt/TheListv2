@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { get_notes, save_notes } from "./actions/note_actions"
 import { get_lists, get_list_order, save_list, save_order } from './actions/list_actions';
-import { Background } from './components/ContainerComponents';
+import { Background, Header, Content } from './components/ContainerComponents';
 
 const Title = styled.div`
     text-align: center;
@@ -242,17 +242,20 @@ const App = () => {
             <Title>
               <text>Avengers Infinity War</text>
             </Title>
-            <DragDropContext onDragEnd={onDragEnd}>
-              <Container>
-                {!state.columnsort ? "loading" : state.columnsort.map(columnId => {
-                  const column = state.columns[columnId];
-                  const hero = state.heroes
-                  const heroes = !column.notes ? [] : column.notes.map(note => hero[note]);
-                  console.log(heroes)
-                  return <Column key={Column._id} column={column} heroes={heroes} />;
-                })}
-              </Container>
-            </DragDropContext>
+            <Header />
+            <Content>
+              <DragDropContext onDragEnd={onDragEnd}>
+                <Container>
+                  {!state.columnsort ? "loading" : state.columnsort.map(columnId => {
+                    const column = state.columns[columnId];
+                    const hero = state.heroes
+                    const heroes = !column.notes ? [] : column.notes.map(note => hero[note]);
+                    console.log(heroes)
+                    return <Column key={Column._id} column={column} heroes={heroes} />;
+                  })}
+                </Container>
+              </DragDropContext>
+            </Content>
           </div>
         }
       </div>
