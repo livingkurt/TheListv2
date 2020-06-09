@@ -1,14 +1,16 @@
 // React
 import React from "react";
-// Styles
-import './title.css'
 
 
 const Title = (props) => {
 
+  const title_styles = {
+    marginTop: "0px"
+  }
+
   return (
     <div className="title">
-      <h2 style={props.styles}>{props.children}</h2>
+      <h2 style={{ ...props.styles, ...title_styles }}>{props.children}</h2>
     </div >
   );
 }

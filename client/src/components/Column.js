@@ -3,6 +3,7 @@ import { Droppable } from 'react-beautiful-dnd';
 import Hero from './Hero';
 import styled from 'styled-components';
 import { Section, ScrollContainer } from './ContainerComponents/index';
+import { Title } from './UtilityComponents';
 
 
 const Container = styled.div`
@@ -14,9 +15,9 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.div`
-  padding: 10px;
-`;
+// const Title = styled.div`
+//   padding: 10px;
+// `;
 
 const HeroList = styled.div`
   padding: 0px;
