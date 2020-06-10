@@ -3,9 +3,9 @@
   transition: all .5s;
   transform: translateX(-32rem);
   width: 30rem;
-  background-color: #2d2d2de6;
+  background-color: white;
   height: 100%;
-  top: 110px;
+  top: 100px;
   padding: 10px;
   z-index: 99;
 }

@@ -1,7 +1,7 @@
 .input_editor {
   border-radius: 5px;
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   border: 0px;
   font-size: 16px;
   padding-left: 5px;
