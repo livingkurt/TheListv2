@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { get_notes, save_notes } from "../../actions/note_actions"
 import { get_lists, get_list_order, save_list, save_order } from '../../actions/list_actions';
 import { Background, Header } from './index';
+import FlexContainer from './FlexContainer';
 
 // const Title = styled.div`
 //     text-align: center;
@@ -28,15 +29,16 @@ const Content = (props) => {
 
   const content_styles = {
     // width: "100%",
-    gridArea: "main",
     // backgroundColor: "#737373",
     // boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
     // background: "linear-gradient(180deg, rgba(138, 138, 138, 1) 0%, rgba(39, 39, 39, 1) 100%)",
     borderRadius: "20px",
-    margin: "110px auto",
+    margin: "100px auto",
     // padding: "2rem",
     minHeight: "81vh",
     display: "flex",
+    // justifyContent: "space-between",
+    // padding: "10px"
     // flexWrap: "wrap"
 
   }
@@ -250,22 +252,24 @@ const Content = (props) => {
 
   // }
 
-
+  const class_name = ["todo_master_col", "todo_dump_col", "calender_col"]
 
   return (
 
-    <div style={{ ...content_styles, ...props.styles }} className="content">
-      {loading_notes && loading_lists && loading_order ? "Loading Data" :
-        <DragDropContext onDragEnd={onDragEnd}>
-          {!state.columnsort ? "loading" : state.columnsort.map(columnId => {
-            const column = state.columns[columnId];
-            const hero = state.heroes
-            const heroes = !column.notes ? [] : column.notes.map(note => hero[note]);
-            console.log(heroes)
-            return <Column key={Column._id} column={column} heroes={heroes} />;
-          })}
-        </DragDropContext>}
-    </div>
+    <FlexContainer styles={{ ...content_styles, ...props.styles }} className="content">
+      <FlexContainer wrap styles={{ margin: "10px", width: "100%", justifyContent: "space-between" }}>
+        {loading_notes && loading_lists && loading_order ? "Loading Data" :
+          <DragDropContext onDragEnd={onDragEnd}>
+            {!state.columnsort ? "loading" : state.columnsort.map((columnId, index) => {
+              const column = state.columns[columnId];
+              const hero = state.heroes
+              const heroes = !column.notes ? [] : column.notes.map(note => hero[note]);
+              console.log(heroes)
+              return <Column key={Column._id} column={column} heroes={heroes} />;
+            })}
+          </DragDropContext>}
+      </FlexContainer>
+    </FlexContainer>
   );
 }
 

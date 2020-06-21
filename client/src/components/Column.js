@@ -2,12 +2,12 @@ import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import Hero from './Hero';
 import styled from 'styled-components';
-import { Section, ScrollContainer } from './ContainerComponents/index';
+import { Section, ScrollContainer, FlexContainer } from './ContainerComponents/index';
 import { Title } from './UtilityComponents';
 
 
 const Container = styled.div`
-  margin: 10px;
+  
   border: 1px solid lightgrey;
   border-radius: 5px;
   width: 33%;
@@ -29,8 +29,9 @@ const Column = (props) => {
 
   return (
     <Section class={props.column.list_name}>
+
       <Title>{props.column.list_name}</Title>
-      <ScrollContainer>
+      <ScrollContainer >
         <Droppable droppableId={props.column._id}>
           {provided => (
             <HeroList innerRef={provided.innerRef} {...provided.droppableProps}>

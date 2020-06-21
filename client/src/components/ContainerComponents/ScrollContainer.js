@@ -5,7 +5,8 @@ import React from "react";
 const ScrollContainer = (props) => {
 
   const scroll_container_styles = {
-    height: "83vh",
+    // height: "83vh",
+    height: "93%",
     width: "100%",
     backgroundColor: "white",
     borderRadius: "10px",

@@ -1,10 +1,13 @@
 // React
-import React from "react";
+import React, { useRef } from "react";
 // Styles
 import './editor_input.css'
 
 
 const EditorInput = (props) => {
+
+  const inputRef = useRef()
+  // console.log(inputRef.current.value)
 
   // "this.style.width = ((this.value.length + 1) * 8) + 'px';"
 
@@ -18,6 +21,7 @@ const EditorInput = (props) => {
   return (
     <div style={{ width: "100%" }}>
       <input
+        ref={inputRef}
         onKeyPress={e => adjust_input_size(e)}
         defaultValue={props.value}
         // onBlur={e => props.on_change_function(e)}
